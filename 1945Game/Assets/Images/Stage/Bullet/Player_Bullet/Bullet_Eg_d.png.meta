@@ -40,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -54,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,9 +132,9 @@ TextureImporter:
       name: Bullet_Eg_d_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 0
         y: 0
-        width: 13
+        width: 48
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -150,33 +150,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Bullet_Eg_d_1
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 13
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3f4fccef1d181ca30800000000000000
-      internalID: 4233807863627969779
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9baa35dbcedcab44d8d787df559c5de1
     internalID: 0
     vertices: []
     indices: 
@@ -187,7 +165,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Bullet_Eg_d_0: 7036295500315667958
-      Bullet_Eg_d_1: 4233807863627969779
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

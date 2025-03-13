@@ -104,6 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   effect: {fileID: 3293794107364415240, guid: fb32e317966b03d4097e551d4aeeee9d, type: 3}
+  Item: {fileID: 70011057584368570, guid: 25e0d855cf1981b498d77ce3971c78ac, type: 3}
 --- !u!50 &2625072470569208271
 Rigidbody2D:
   serializedVersion: 5

@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
     //공격력
     //이펙트
     public GameObject effect;
+    public GameObject Item;
 
 
 
@@ -40,12 +41,36 @@ public class Bullet : MonoBehaviour
 
             Destroy(gameObject);
 
+            CreateItem(collision.transform.position);
 
 
         }
 
 
     }
+
+    private void CreateItem(Vector3 position)
+    {
+        float rand = Random.Range(0, 100);
+        //Debug.Log("랜덤 값: " + rand); // 랜덤 값 확인
+
+        if (Item == null)
+        {
+            Debug.LogError("Item 프리팹이 할당되지 않았습니다! Unity Inspector에서 확인하세요.");
+            return;
+        }
+
+        if (rand < 25)
+        {
+            Instantiate(Item, position, Quaternion.identity);
+            //Debug.Log("아이템 생성!");
+        }
+        else
+        {
+            //Debug.Log("아이템 미생성.");
+        }
+    }
+
 
 
 

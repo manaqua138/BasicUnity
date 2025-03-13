@@ -1,13 +1,16 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     //스피드
     public float moveSpeed = 5f;
+    private int bulletLevel = 0;
 
     Animator ani; //애니메이터를 가져올 변수
 
-    public GameObject bullet;  //총알 추후 4개 배열로 만들예정
+    public GameObject[] bullets = new GameObject[4];
+
     public Transform pos = null;
 
     //아이템
@@ -17,6 +20,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         ani = GetComponent<Animator>();
+    
     }
 
     void Update()
@@ -47,12 +51,9 @@ public class Player : MonoBehaviour
             ani.SetBool("up", false);
         }
 
-        //스페이스
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //프리팹 위치 방향 넣고 생성
-            Instantiate(bullet, pos.position, Quaternion.identity);
-            SoundManage.instance.PlaySoundBullet();
+            FireBullet();
         }
 
 
@@ -69,4 +70,30 @@ public class Player : MonoBehaviour
 
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Item")) //이게 == 보다 좀 더 엄밀하게 측정
+        {
+
+            if(bulletLevel < 3) { bulletLevel += 1; }
+            Destroy(collision.gameObject);
+            Debug.Log("bulletLevel :  " + bulletLevel);
+
+
+        }
+    }
+
+    private void FireBullet()
+    {
+        if (bulletLevel >= 0 && bulletLevel < bullets.Length) // bulletLevel이 배열 범위 내인지 확인
+        {
+            Instantiate(bullets[bulletLevel], pos.position, Quaternion.identity);
+            SoundManage.instance.PlaySoundBullet();
+        }
+    }
+
+
+
+
 }

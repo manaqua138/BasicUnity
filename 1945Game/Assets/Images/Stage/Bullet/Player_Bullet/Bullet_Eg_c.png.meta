@@ -40,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -132,10 +132,10 @@ TextureImporter:
       name: Bullet_Eg_c_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 7
-        width: 9
-        height: 34
+        x: 0
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,33 +150,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Bullet_Eg_c_1
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 7
-        width: 9
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 41450a1c42abf0c80800000000000000
-      internalID: -8354254116718881772
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 14df8d75d77471c4fafc08cda2d35a0f
     internalID: 0
     vertices: []
     indices: 
@@ -187,7 +165,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Bullet_Eg_c_0: 147316924086779331
-      Bullet_Eg_c_1: -8354254116718881772
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
