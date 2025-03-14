@@ -5,7 +5,9 @@ public class Player : MonoBehaviour
 {
     //스피드
     public float moveSpeed = 5f;
+    public static Player instance;
     private int bulletLevel = 0;
+
 
     Animator ani; //애니메이터를 가져올 변수
 
@@ -13,9 +15,27 @@ public class Player : MonoBehaviour
 
     public Transform pos = null;
 
+    [SerializeField]
+    private GameObject powerup;
+
+
     //아이템
 
     //레이져
+
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this; // 싱글톤 인스턴스 초기화
+        }
+        else
+        {
+            Debug.LogWarning("이미 Player인스턴스가 존재합니다!");
+        }
+    }
+
 
     void Start()
     {
@@ -76,8 +96,14 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Item")) //이게 == 보다 좀 더 엄밀하게 측정
         {
 
-            if(bulletLevel < 3) { bulletLevel += 1; }
+            if(bulletLevel < 3) 
+            { 
+                bulletLevel += 1;
+                GameObject LevelUp = Instantiate(powerup, transform.position, Quaternion.identity);
+                Destroy(LevelUp, 1);
+            }
             Destroy(collision.gameObject);
+            SoundManage.instance.PlaySoundEatItem();
             Debug.Log("bulletLevel :  " + bulletLevel);
 
 
@@ -91,6 +117,11 @@ public class Player : MonoBehaviour
             Instantiate(bullets[bulletLevel], pos.position, Quaternion.identity);
             SoundManage.instance.PlaySoundBullet();
         }
+    }
+
+    public int GetBulletLevel()
+    {
+        return bulletLevel;
     }
 
 

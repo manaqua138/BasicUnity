@@ -2,76 +2,64 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float moveSpeed = 0.7f;
+    public float Speed = 4.0f;
     //공격력
     //이펙트
     public GameObject effect;
-    public GameObject Item;
-
-
-
-    void Start()
-    {
-
-    }
 
     void Update()
     {
-        transform.Translate(0, moveSpeed * Time.deltaTime, 0);
+        //미사일 위쪽방향으로 움직이기
+        //위의 방향 * 스피드 * 타임
+        transform.Translate(Vector2.up * Speed * Time.deltaTime);
     }
 
+
+    //화면밖으로 나갈경우
     private void OnBecameInvisible()
     {
+        //자기 자신 지우기
         Destroy(gameObject);
     }
 
+
+    //충돌처리
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        //if(collision.gameObject.tag == "Enemy")
-        if (collision.gameObject.CompareTag("Monster")) //이게 == 보다 좀 더 엄밀하게 측정
+        if (collision.CompareTag("Monster"))
         {
 
-            
-            GameObject go = Instantiate(effect, collision.transform.position, Quaternion.identity);
-
+            //이펙트생성
+            GameObject go = Instantiate(effect, transform.position, Quaternion.identity);
+            //1초뒤에 지우기
             Destroy(go, 1);
-          
-            Destroy(collision.gameObject);
 
+            //몬스터삭제
+            collision.gameObject.GetComponent<Monster>().Damage(1);
+
+            //미사일 삭제
             Destroy(gameObject);
 
-            CreateItem(collision.transform.position);
-
-
         }
+
+        //if (collision.CompareTag("Boss"))
+        //{
+
+        //    //이펙트생성
+        //    GameObject go = Instantiate(effect, transform.position, Quaternion.identity);
+        //    //1초뒤에 지우기
+        //    Destroy(go, 1);
+
+        //    //몬스터삭제
+        //    collision.gameObject.GetComponent<Monster>().Damage(1);
+
+        //    //미사일 삭제
+        //    Destroy(gameObject);
+
+        //}
 
 
     }
-
-    private void CreateItem(Vector3 position)
-    {
-        float rand = Random.Range(0, 100);
-        //Debug.Log("랜덤 값: " + rand); // 랜덤 값 확인
-
-        if (Item == null)
-        {
-            Debug.LogError("Item 프리팹이 할당되지 않았습니다! Unity Inspector에서 확인하세요.");
-            return;
-        }
-
-        if (rand < 25)
-        {
-            Instantiate(Item, position, Quaternion.identity);
-            //Debug.Log("아이템 생성!");
-        }
-        else
-        {
-            //Debug.Log("아이템 미생성.");
-        }
-    }
-
-
 
 
 
