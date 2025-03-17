@@ -200,14 +200,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7df030403255ba4f88c10d2d2af44f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 200
   Speed: 1
   Delay: 1
   ms1: {fileID: 8041762147817398565}
   ms2: {fileID: 6448794754117117770}
   bullet: {fileID: 676649940670342043, guid: 6c0510d960f37ae44bea80dc787d6835, type: 3}
   Item: {fileID: 70011057584368570, guid: 25e0d855cf1981b498d77ce3971c78ac, type: 3}
-  effect: {fileID: 3293794107364415240, guid: fb32e317966b03d4097e551d4aeeee9d, type: 3}
-  mHP: 3
 --- !u!1 &6833513118543006424
 GameObject:
   m_ObjectHideFlags: 0

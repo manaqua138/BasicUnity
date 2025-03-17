@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf80fb21ad9bed4409f53ed2da28b5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  Speed: 4
+  Attack: 30
   effect: {fileID: 3293794107364415240, guid: fb32e317966b03d4097e551d4aeeee9d, type: 3}
-  Item: {fileID: 70011057584368570, guid: 25e0d855cf1981b498d77ce3971c78ac, type: 3}
 --- !u!50 &2625072470569208271
 Rigidbody2D:
   serializedVersion: 5

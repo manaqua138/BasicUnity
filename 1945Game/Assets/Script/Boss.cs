@@ -15,9 +15,15 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
+        Invoke("Hide", 2);
         StartCoroutine(BossMissle());
         StartCoroutine(CircleFire());
 
+    }
+
+    void Hide()
+    {
+        GameObject.Find("TextBossWarning").SetActive(false);
     }
 
     IEnumerator BossMissle()

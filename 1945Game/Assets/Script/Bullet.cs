@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     public float Speed = 4.0f;
     //공격력
+    public int Attack = 10;
     //이펙트
     public GameObject effect;
 
@@ -35,7 +36,9 @@ public class Bullet : MonoBehaviour
             Destroy(go, 1);
 
             //몬스터삭제
-            collision.gameObject.GetComponent<Monster>().Damage(1);
+            collision.gameObject.GetComponent<Monster>().Damage(Attack);
+            //PoolManager.Instance.Return(collision.gameObject);
+
 
             //미사일 삭제
             Destroy(gameObject);

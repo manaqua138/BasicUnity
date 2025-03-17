@@ -7,11 +7,13 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f;
     public static Player instance;
     private int bulletLevel = 0;
+    private int countLazer = 3;
+
 
 
     Animator ani; //애니메이터를 가져올 변수
 
-    public GameObject[] bullets = new GameObject[4];
+    public GameObject[] bullets = new GameObject[4]; 
 
     public Transform pos = null;
 
@@ -19,9 +21,9 @@ public class Player : MonoBehaviour
     private GameObject powerup;
 
 
-    //아이템
-
     //레이져
+    public GameObject Lazer;
+    public float gValue = 0;
 
 
     private void Awake()
@@ -75,9 +77,31 @@ public class Player : MonoBehaviour
         {
             FireBullet();
         }
+        else if(Input.GetKey(KeyCode.Space))
+        {
+            gValue += Time.deltaTime;
+
+            if(gValue >= 1 && countLazer > 0)
+            {
+                GameObject go = Instantiate(Lazer, pos.position, Quaternion.identity);
+                Destroy(go, 1);
+                gValue = 0;
+                --countLazer;
+
+            }
+        }
+        else
+        {
+            gValue -= Time.deltaTime;
+            if(gValue <= 0 )
+            {
+                gValue = 0;
+            }
+        }
 
 
-        transform.Translate(moveX, moveY, 0);
+
+            transform.Translate(moveX, moveY, 0);
 
         //캐릭터의 월드 좌표를 뷰포트 좌표계로 변환해준다.
         Vector3 viewPos = Camera.main.WorldToViewportPoint(transform.position);
@@ -118,6 +142,9 @@ public class Player : MonoBehaviour
             SoundManage.instance.PlaySoundBullet();
         }
     }
+
+  
+
 
     public int GetBulletLevel()
     {
