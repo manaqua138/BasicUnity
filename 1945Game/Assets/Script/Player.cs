@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f;
     public static Player instance;
     private int bulletLevel = 0;
-    private int countLazer = 3;
+    private int countLazer = 50;
 
 
 
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
     //·¹ÀÌÁ®
     public GameObject Lazer;
     public float gValue = 0;
+    public Image Gage;
 
 
     private void Awake()
@@ -80,6 +82,7 @@ public class Player : MonoBehaviour
         else if(Input.GetKey(KeyCode.Space))
         {
             gValue += Time.deltaTime;
+            Gage.fillAmount = gValue;
 
             if(gValue >= 1 && countLazer > 0)
             {
@@ -93,10 +96,14 @@ public class Player : MonoBehaviour
         else
         {
             gValue -= Time.deltaTime;
+
             if(gValue <= 0 )
             {
                 gValue = 0;
             }
+
+            Gage.fillAmount = gValue;
+
         }
 
 
