@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     //히트 이펙트
     public GameObject hit_lazer;
     public GameObject jumpDust;
+    public GameObject wallDust;
 
 
     bool bJump = false;
@@ -143,6 +144,8 @@ public class Player : MonoBehaviour
             {
                 isWallJump = true;
                 //벽점프 먼지
+                GameObject go = Instantiate(wallDust, transform.position + new Vector3(0.8f * isRight, 0, 0), Quaternion.identity);
+                go.GetComponent<SpriteRenderer>().flipX = sp.flipX;
 
                 Invoke("FreezeX", 0.3f);
 
@@ -151,6 +154,7 @@ public class Player : MonoBehaviour
 
                 sp.flipX = sp.flipX == false ? true : false;
                 isRight = -isRight;
+             
             }
 
         }
@@ -177,6 +181,17 @@ public class Player : MonoBehaviour
                 if (rayHit.distance < 0.7f)
                 {
                     pAnimator.SetBool("Jump", false);
+                }
+            }
+            else
+            {
+                if(!isWall)
+                {
+                    pAnimator.SetBool("Jump", true);
+                }
+                else
+                {
+                    pAnimator.SetBool("Grab", true);
                 }
             }
         }
@@ -240,8 +255,13 @@ public class Player : MonoBehaviour
     }
 
     public void JumpDust()
+    {    
+            Instantiate(jumpDust, transform.position, Quaternion.identity);            
+    }
+
+    public void WallDust()
     {
-        Instantiate(jumpDust, transform.position, Quaternion.identity);
+        Instantiate(wallDust, transform.position, Quaternion.identity);
     }
 
     private void OnDrawGizmos()
